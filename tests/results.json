@@ -1,0 +1,918 @@
+{
+ "tests/before/01-ppt-quarterly.md": {
+  "chars": 188,
+  "score": 28,
+  "per1k": 148.9,
+  "counts": {
+   "empty_title": 2,
+   "contrast": 1,
+   "hedge_stack": 1,
+   "concessive": 1,
+   "disclaimer": 1,
+   "meta": 1,
+   "buzzword": 4,
+   "ending": 3
+  },
+  "hard": 9,
+  "soft": 5,
+  "verdict": "FAIL",
+  "reasons": [
+   "9 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "加权分 28 > 6.0 且密度 148.9/千字 > 15"
+  ],
+  "hits": [
+   {
+    "line": 2,
+    "cat": "empty_title",
+    "sev": "hard",
+    "w": 2,
+    "text": "# 第三季度复盘：增长，但不止于增长",
+    "tip": "冒号+转折式口号标题，改成结论句"
+   },
+   {
+    "line": 3,
+    "cat": "contrast",
+    "sev": "hard",
+    "w": 3,
+    "text": "不是偶然，而是",
+    "tip": "删掉假想的 X，直接说 Y，把依据放旁边"
+   },
+   {
+    "line": 3,
+    "cat": "hedge_stack",
+    "sev": "hard",
+    "w": 2,
+    "text": "在一定程度上",
+    "tip": "写出程度（数字/范围）或删除"
+   },
+   {
+    "line": 4,
+    "cat": "concessive",
+    "sev": "soft",
+    "w": 1,
+    "text": "虽然市场环境复杂多变，但",
+    "tip": "先给结论；限制只写一次并具体化"
+   },
+   {
+    "line": 5,
+    "cat": "disclaimer",
+    "sev": "hard",
+    "w": 3,
+    "text": "仅供参考",
+    "tip": "删除；真实的不确定写一次、贴着数字、说清缺什么"
+   },
+   {
+    "line": 5,
+    "cat": "meta",
+    "sev": "hard",
+    "w": 2,
+    "text": "需要指出的是",
+    "tip": "删掉预告和自我辩护，直接写内容"
+   },
+   {
+    "line": 6,
+    "cat": "empty_title",
+    "sev": "hard",
+    "w": 2,
+    "text": "# 展望",
+    "tip": "目录式标题，改成本页结论"
+   },
+   {
+    "line": 7,
+    "cat": "buzzword",
+    "sev": "soft",
+    "w": 1,
+    "text": "赋能",
+    "tip": "换成具体动作或结果"
+   },
+   {
+    "line": 7,
+    "cat": "buzzword",
+    "sev": "soft",
+    "w": 1,
+    "text": "打通",
+    "tip": "换成具体动作或结果"
+   },
+   {
+    "line": 7,
+    "cat": "buzzword",
+    "sev": "soft",
+    "w": 1,
+    "text": "全链路",
+    "tip": "换成具体动作或结果"
+   },
+   {
+    "line": 7,
+    "cat": "buzzword",
+    "sev": "soft",
+    "w": 1,
+    "text": "闭环",
+    "tip": "换成具体动作或结果"
+   },
+   {
+    "line": 8,
+    "cat": "ending",
+    "sev": "hard",
+    "w": 3,
+    "text": "未来可期",
+    "tip": "删掉；以最后一个具体结果或下一步收尾"
+   },
+   {
+    "line": 8,
+    "cat": "ending",
+    "sev": "hard",
+    "w": 3,
+    "text": "让我们携手",
+    "tip": "删掉；以最后一个具体结果或下一步收尾"
+   },
+   {
+    "line": 8,
+    "cat": "ending",
+    "sev": "hard",
+    "w": 3,
+    "text": "共创美好未来",
+    "tip": "删掉；以最后一个具体结果或下一步收尾"
+   }
+  ]
+ },
+ "tests/before/02-ppt-ai-strategy.md": {
+  "chars": 182,
+  "score": 24,
+  "per1k": 131.9,
+  "counts": {
+   "empty_title": 2,
+   "contrast_soft": 1,
+   "contrast": 1,
+   "buzzword": 1,
+   "hedge_stack": 2,
+   "disclaimer": 1,
+   "meta": 1,
+   "ending": 2
+  },
+  "hard": 9,
+  "soft": 2,
+  "verdict": "FAIL",
+  "reasons": [
+   "9 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "加权分 24 > 6.0 且密度 131.9/千字 > 15"
+  ],
+  "hits": [
+   {
+    "line": 2,
+    "cat": "empty_title",
+    "sev": "hard",
+    "w": 2,
+    "text": "AI 战略：创新驱动，价值引领",
+    "tip": "口号词标题，改成'对象+动作/判断+数字'"
+   },
+   {
+    "line": 3,
+    "cat": "contrast_soft",
+    "sev": "soft",
+    "w": 1,
+    "text": "不仅仅是一项技术，更是",
+    "tip": "两部分都有信息才保留"
+   },
+   {
+    "line": 4,
+    "cat": "contrast",
+    "sev": "hard",
+    "w": 3,
+    "text": "很多人以为 AI 只是降本工具，其实",
+    "tip": "读者没有这个误解就别替他立"
+   },
+   {
+    "line": 4,
+    "cat": "buzzword",
+    "sev": "soft",
+    "w": 1,
+    "text": "重塑",
+    "tip": "换成具体动作或结果"
+   },
+   {
+    "line": 5,
+    "cat": "hedge_stack",
+    "sev": "hard",
+    "w": 2,
+    "text": "可能会在某种程度上",
+    "tip": "同一层不确定只留一个词"
+   },
+   {
+    "line": 5,
+    "cat": "hedge_stack",
+    "sev": "hard",
+    "w": 2,
+    "text": "在某种程度上",
+    "tip": "写出程度（数字/范围）或删除"
+   },
+   {
+    "line": 5,
+    "cat": "disclaimer",
+    "sev": "hard",
+    "w": 3,
+    "text": "需要结合自身情况",
+    "tip": "删除；真实的不确定写一次、贴着数字、说清缺什么"
+   },
+   {
+    "line": 5,
+    "cat": "meta",
+    "sev": "hard",
+    "w": 2,
+    "text": "值得注意的是",
+    "tip": "删掉预告和自我辩护，直接写内容"
+   },
+   {
+    "line": 7,
+    "cat": "empty_title",
+    "sev": "hard",
+    "w": 2,
+    "text": "结语",
+    "tip": "目录式标题，改成本页结论"
+   },
+   {
+    "line": 8,
+    "cat": "ending",
+    "sev": "hard",
+    "w": 3,
+    "text": "迈出了关键的一步",
+    "tip": "删掉；以最后一个具体结果或下一步收尾"
+   },
+   {
+    "line": 8,
+    "cat": "ending",
+    "sev": "hard",
+    "w": 3,
+    "text": "为未来发展奠定了坚实基础",
+    "tip": "删掉；以最后一个具体结果或下一步收尾"
+   }
+  ]
+ },
+ "tests/before/03-ppt-product.md": {
+  "chars": 180,
+  "score": 13,
+  "per1k": 72.2,
+  "counts": {
+   "empty_title": 2,
+   "contrast": 2,
+   "buzzword": 1,
+   "concessive": 1,
+   "disclaimer": 1
+  },
+  "hard": 4,
+  "soft": 3,
+  "verdict": "FAIL",
+  "reasons": [
+   "4 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "加权分 13 > 6.0 且密度 72.2/千字 > 15"
+  ],
+  "hits": [
+   {
+    "line": 2,
+    "cat": "empty_title",
+    "sev": "hard",
+    "w": 2,
+    "text": "# 产品升级：简单，但不随意",
+    "tip": "冒号+转折式口号标题，改成结论句"
+   },
+   {
+    "line": 3,
+    "cat": "contrast",
+    "sev": "hard",
+    "w": 3,
+    "text": "不是一次普通的迭代，而是",
+    "tip": "删掉假想的 X，直接说 Y，把依据放旁边"
+   },
+   {
+    "line": 3,
+    "cat": "buzzword",
+    "sev": "soft",
+    "w": 1,
+    "text": "重塑",
+    "tip": "换成具体动作或结果"
+   },
+   {
+    "line": 5,
+    "cat": "concessive",
+    "sev": "soft",
+    "w": 1,
+    "text": "尽管仍",
+    "tip": "先给结论；限制只写一次并具体化"
+   },
+   {
+    "line": 5,
+    "cat": "disclaimer",
+    "sev": "soft",
+    "w": 1,
+    "text": "仍存在一定的不确定性",
+    "tip": "写清缺哪项数据、何时补"
+   },
+   {
+    "line": 6,
+    "cat": "contrast",
+    "sev": "hard",
+    "w": 3,
+    "text": "It's not just a feature update — it's ",
+    "tip": "State Y directly"
+   },
+   {
+    "line": 7,
+    "cat": "empty_title",
+    "sev": "hard",
+    "w": 2,
+    "text": "# Key Takeaways",
+    "tip": "目录式标题，改成本页结论"
+   }
+  ]
+ },
+ "tests/before/04-doc-market.md": {
+  "chars": 148,
+  "score": 17,
+  "per1k": 114.9,
+  "counts": {
+   "contrast": 1,
+   "concessive": 1,
+   "hedge_stack": 1,
+   "disclaimer": 2,
+   "meta": 1,
+   "ending": 1
+  },
+  "hard": 6,
+  "soft": 1,
+  "verdict": "FAIL",
+  "reasons": [
+   "6 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "加权分 17 > 6.0 且密度 114.9/千字 > 15"
+  ],
+  "hits": [
+   {
+    "line": 2,
+    "cat": "contrast",
+    "sev": "hard",
+    "w": 3,
+    "text": "不在于短期涨跌，而在于",
+    "tip": "直接说关键是什么"
+   },
+   {
+    "line": 2,
+    "cat": "concessive",
+    "sev": "soft",
+    "w": 1,
+    "text": "虽然短期内存在回调风险，但",
+    "tip": "先给结论；限制只写一次并具体化"
+   },
+   {
+    "line": 2,
+    "cat": "hedge_stack",
+    "sev": "hard",
+    "w": 2,
+    "text": "可能或许",
+    "tip": "同一层不确定只留一个词"
+   },
+   {
+    "line": 2,
+    "cat": "disclaimer",
+    "sev": "hard",
+    "w": 3,
+    "text": "不构成任何投资建议",
+    "tip": "删除；真实的不确定写一次、贴着数字、说清缺什么"
+   },
+   {
+    "line": 2,
+    "cat": "disclaimer",
+    "sev": "hard",
+    "w": 3,
+    "text": "请咨询专业人士",
+    "tip": "删除；真实的不确定写一次、贴着数字、说清缺什么"
+   },
+   {
+    "line": 2,
+    "cat": "meta",
+    "sev": "hard",
+    "w": 2,
+    "text": "需要特别强调的是",
+    "tip": "删掉预告和自我辩护，直接写内容"
+   },
+   {
+    "line": 2,
+    "cat": "ending",
+    "sev": "hard",
+    "w": 3,
+    "text": "值得期待",
+    "tip": "删掉；以最后一个具体结果或下一步收尾"
+   }
+  ]
+ },
+ "tests/before/05-doc-report.md": {
+  "chars": 165,
+  "score": 23,
+  "per1k": 139.4,
+  "counts": {
+   "contrast": 2,
+   "hedge_stack": 2,
+   "disclaimer": 1,
+   "meta": 4,
+   "buzzword": 1,
+   "ending": 1
+  },
+  "hard": 8,
+  "soft": 3,
+  "verdict": "FAIL",
+  "reasons": [
+   "8 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "加权分 23 > 6.0 且密度 139.4/千字 > 15"
+  ],
+  "hits": [
+   {
+    "line": 2,
+    "cat": "contrast",
+    "sev": "hard",
+    "w": 3,
+    "text": "不是简单的修修补补，而是",
+    "tip": "删掉假想的 X，直接说 Y，把依据放旁边"
+   },
+   {
+    "line": 2,
+    "cat": "contrast",
+    "sev": "hard",
+    "w": 3,
+    "text": "表面上看只是换了一个工具，实际上",
+    "tip": "直接说实际情况"
+   },
+   {
+    "line": 2,
+    "cat": "hedge_stack",
+    "sev": "hard",
+    "w": 2,
+    "text": "可能在一定程度上",
+    "tip": "同一层不确定只留一个词"
+   },
+   {
+    "line": 2,
+    "cat": "hedge_stack",
+    "sev": "hard",
+    "w": 2,
+    "text": "在一定程度上",
+    "tip": "写出程度（数字/范围）或删除"
+   },
+   {
+    "line": 2,
+    "cat": "disclaimer",
+    "sev": "hard",
+    "w": 3,
+    "text": "仅供参考",
+    "tip": "删除；真实的不确定写一次、贴着数字、说清缺什么"
+   },
+   {
+    "line": 2,
+    "cat": "meta",
+    "sev": "hard",
+    "w": 2,
+    "text": "说白了",
+    "tip": "删掉预告和自我辩护，直接写内容"
+   },
+   {
+    "line": 2,
+    "cat": "meta",
+    "sev": "hard",
+    "w": 2,
+    "text": "总而言之",
+    "tip": "删掉预告和自我辩护，直接写内容"
+   },
+   {
+    "line": 2,
+    "cat": "meta",
+    "sev": "soft",
+    "w": 1,
+    "text": "随着数字化转型的不断发展",
+    "tip": "直接写结论/动作；'进行+动词'还原成动词"
+   },
+   {
+    "line": 2,
+    "cat": "meta",
+    "sev": "soft",
+    "w": 1,
+    "text": "进行了系统性的优化",
+    "tip": "直接写结论/动作；'进行+动词'还原成动词"
+   },
+   {
+    "line": 2,
+    "cat": "buzzword",
+    "sev": "soft",
+    "w": 1,
+    "text": "底层逻辑",
+    "tip": "换成具体动作或结果"
+   },
+   {
+    "line": 2,
+    "cat": "ending",
+    "sev": "hard",
+    "w": 3,
+    "text": "彰显了团队的执行力和创新意义",
+    "tip": "删掉；以最后一个具体结果或下一步收尾"
+   }
+  ]
+ },
+ "tests/before/06-doc-en.md": {
+  "chars": 229,
+  "score": 13,
+  "per1k": 56.8,
+  "counts": {
+   "contrast": 1,
+   "concessive": 1,
+   "hedge_stack": 1,
+   "disclaimer": 1,
+   "meta": 1,
+   "buzzword": 2
+  },
+  "hard": 4,
+  "soft": 3,
+  "verdict": "FAIL",
+  "reasons": [
+   "4 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "加权分 13 > 6.0 且密度 56.8/千字 > 15"
+  ],
+  "hits": [
+   {
+    "line": 2,
+    "cat": "contrast",
+    "sev": "hard",
+    "w": 3,
+    "text": "It's not about cutting costs. It's about ",
+    "tip": "State Y directly"
+   },
+   {
+    "line": 2,
+    "cat": "concessive",
+    "sev": "soft",
+    "w": 1,
+    "text": "While the results are promising,",
+    "tip": "Lead with the claim"
+   },
+   {
+    "line": 2,
+    "cat": "hedge_stack",
+    "sev": "hard",
+    "w": 2,
+    "text": "could potentially",
+    "tip": "One hedge max"
+   },
+   {
+    "line": 2,
+    "cat": "disclaimer",
+    "sev": "hard",
+    "w": 3,
+    "text": "not financial advice",
+    "tip": "Delete; state real uncertainty once, next to the number"
+   },
+   {
+    "line": 2,
+    "cat": "meta",
+    "sev": "hard",
+    "w": 2,
+    "text": "It's worth noting",
+    "tip": "Delete the frame"
+   },
+   {
+    "line": 2,
+    "cat": "buzzword",
+    "sev": "soft",
+    "w": 1,
+    "text": "leverage",
+    "tip": "Use a plain verb"
+   },
+   {
+    "line": 2,
+    "cat": "buzzword",
+    "sev": "soft",
+    "w": 1,
+    "text": "foster",
+    "tip": "Use a plain verb"
+   }
+  ]
+ },
+ "tests/before/07-ppt-training.md": {
+  "chars": 146,
+  "score": 20,
+  "per1k": 137.0,
+  "counts": {
+   "empty_title": 2,
+   "contrast": 2,
+   "disclaimer": 1,
+   "chat": 1,
+   "meta": 1,
+   "ending": 1
+  },
+  "hard": 8,
+  "soft": 0,
+  "verdict": "FAIL",
+  "reasons": [
+   "8 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "加权分 20 > 6.0 且密度 137.0/千字 > 15"
+  ],
+  "hits": [
+   {
+    "line": 2,
+    "cat": "empty_title",
+    "sev": "hard",
+    "w": 2,
+    "text": "# 关于高效沟通的思考",
+    "tip": "空泛标题，写出具体判断"
+   },
+   {
+    "line": 3,
+    "cat": "contrast",
+    "sev": "hard",
+    "w": 3,
+    "text": "不在于说得多，而在于",
+    "tip": "直接说关键是什么"
+   },
+   {
+    "line": 4,
+    "cat": "contrast",
+    "sev": "hard",
+    "w": 3,
+    "text": "你以为沟通是表达，其实",
+    "tip": "读者没有这个误解就别替他立"
+   },
+   {
+    "line": 5,
+    "cat": "disclaimer",
+    "sev": "hard",
+    "w": 3,
+    "text": "因人而异",
+    "tip": "删除；真实的不确定写一次、贴着数字、说清缺什么"
+   },
+   {
+    "line": 5,
+    "cat": "chat",
+    "sev": "hard",
+    "w": 2,
+    "text": "当然可以",
+    "tip": "删除"
+   },
+   {
+    "line": 6,
+    "cat": "empty_title",
+    "sev": "hard",
+    "w": 2,
+    "text": "# 沟通·协作·共赢",
+    "tip": "四字词排比标题，改成结论句"
+   },
+   {
+    "line": 7,
+    "cat": "meta",
+    "sev": "hard",
+    "w": 2,
+    "text": "让我们一起深入",
+    "tip": "删掉预告和自我辩护，直接写内容"
+   },
+   {
+    "line": 8,
+    "cat": "ending",
+    "sev": "hard",
+    "w": 3,
+    "text": "值得期待",
+    "tip": "删掉；以最后一个具体结果或下一步收尾"
+   }
+  ]
+ },
+ "tests/before/08-ppt-v4-patterns.md": {
+  "chars": 218,
+  "score": 19,
+  "per1k": 87.2,
+  "counts": {
+   "this_not": 2,
+   "further_check": 2,
+   "verify_list": 2,
+   "caveat": 1
+  },
+  "hard": 6,
+  "soft": 1,
+  "verdict": "FAIL",
+  "reasons": [
+   "6 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "加权分 19 > 6.0 且密度 87.2/千字 > 15"
+  ],
+  "hits": [
+   {
+    "line": 2,
+    "cat": "this_not",
+    "sev": "hard",
+    "w": 3,
+    "text": "这是渠道结构的变化，不是价格的问题",
+    "tip": "“这是X，不是Y”：直接说X，删掉没人提过的Y（AE-02/AE-03）"
+   },
+   {
+    "line": 3,
+    "cat": "this_not",
+    "sev": "hard",
+    "w": 3,
+    "text": "This is a pipeline issue, not a pricing",
+    "tip": "'this is X, not Y': state X only"
+   },
+   {
+    "line": 8,
+    "cat": "further_check",
+    "sev": "hard",
+    "w": 3,
+    "text": "仍需进一步测试",
+    "tip": "删掉“仍需进一步测试/验证/复盘”式结尾，停在最后一个具体结果（AE-19）"
+   },
+   {
+    "line": 9,
+    "cat": "further_check",
+    "sev": "hard",
+    "w": 3,
+    "text": "Further validation is needed",
+    "tip": "Delete; end on the last concrete result"
+   },
+   {
+    "line": 11,
+    "cat": "verify_list",
+    "sev": "hard",
+    "w": 3,
+    "text": "## 验证清单",
+    "tip": "未经要求的验证清单/待补/风险提示/免责区块：整块删除（AE-20；用户要求或风控报告除外）"
+   },
+   {
+    "line": 12,
+    "cat": "verify_list",
+    "sev": "hard",
+    "w": 3,
+    "text": "【待补】",
+    "tip": "删掉“待补/待验证”标记；缺材料就不写（AE-20）"
+   },
+   {
+    "line": 13,
+    "cat": "caveat",
+    "sev": "soft",
+    "w": 1,
+    "text": "待验证",
+    "tip": "同一份稿子只在一处集中写清缺什么证据，别每页贴一句"
+   }
+  ]
+ },
+ "tests/after/01-ppt-quarterly.md": {
+  "chars": 212,
+  "score": 0,
+  "per1k": 0.0,
+  "counts": {},
+  "hard": 0,
+  "soft": 0,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": []
+ },
+ "tests/after/02-ppt-ai-strategy.md": {
+  "chars": 178,
+  "score": 0,
+  "per1k": 0.0,
+  "counts": {},
+  "hard": 0,
+  "soft": 0,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": []
+ },
+ "tests/after/03-ppt-product.md": {
+  "chars": 106,
+  "score": 0,
+  "per1k": 0.0,
+  "counts": {},
+  "hard": 0,
+  "soft": 0,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": []
+ },
+ "tests/after/04-doc-market.md": {
+  "chars": 128,
+  "score": 0,
+  "per1k": 0.0,
+  "counts": {},
+  "hard": 0,
+  "soft": 0,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": []
+ },
+ "tests/after/05-doc-report.md": {
+  "chars": 130,
+  "score": 0,
+  "per1k": 0.0,
+  "counts": {},
+  "hard": 0,
+  "soft": 0,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": []
+ },
+ "tests/after/06-doc-en.md": {
+  "chars": 185,
+  "score": 0,
+  "per1k": 0.0,
+  "counts": {},
+  "hard": 0,
+  "soft": 0,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": []
+ },
+ "tests/after/07-ppt-training.md": {
+  "chars": 106,
+  "score": 1,
+  "per1k": 9.4,
+  "counts": {
+   "meta": 1
+  },
+  "hard": 0,
+  "soft": 1,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": [
+   {
+    "line": 2,
+    "cat": "meta",
+    "sev": "soft",
+    "w": 1,
+    "text": "先说结论",
+    "tip": "直接写结论/动作；'进行+动词'还原成动词"
+   }
+  ]
+ },
+ "tests/after/08-ppt-v4-patterns.md": {
+  "chars": 118,
+  "score": 0,
+  "per1k": 0.0,
+  "counts": {},
+  "hard": 0,
+  "soft": 0,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": []
+ },
+ "tests/false_positive.md": {
+  "chars": 145,
+  "score": 0,
+  "per1k": 0.0,
+  "counts": {},
+  "hard": 0,
+  "soft": 0,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": []
+ },
+ "tests/false_positive_stress.md": {
+  "chars": 112,
+  "score": 2,
+  "per1k": 17.9,
+  "counts": {
+   "concessive": 1,
+   "contrast_soft": 1
+  },
+  "hard": 0,
+  "soft": 2,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": [
+   {
+    "line": 2,
+    "cat": "concessive",
+    "sev": "soft",
+    "w": 1,
+    "text": "虽然样本只有 68 条，但",
+    "tip": "先给结论；限制只写一次并具体化"
+   },
+   {
+    "line": 3,
+    "cat": "contrast_soft",
+    "sev": "soft",
+    "w": 1,
+    "text": "不是 bug，是",
+    "tip": "确认否定部分是否纠正了真实误解"
+   }
+  ]
+ },
+ "tests/false_positive_v4.md": {
+  "chars": 144,
+  "score": 1,
+  "per1k": 6.9,
+  "counts": {
+   "contrast_soft": 1
+  },
+  "hard": 0,
+  "soft": 1,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": [
+   {
+    "line": 2,
+    "cat": "contrast_soft",
+    "sev": "soft",
+    "w": 1,
+    "text": "不是我说的，是",
+    "tip": "确认否定部分是否纠正了真实误解"
+   }
+  ]
+ }
+}
