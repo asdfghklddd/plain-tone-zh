@@ -1,0 +1,20 @@
+<!-- 必要的标签、帮助文字和危险操作提示，不应被判为冗余 -->
+<form>
+  <label for="pwd">新密码</label>
+  <input id="pwd" type="password" aria-describedby="pwd-rule">
+  <p class="hint" id="pwd-rule">至少 8 位，含数字和字母</p>
+  <label for="pwd2">确认新密码</label>
+  <input id="pwd2" type="password" aria-describedby="pwd2-rule">
+  <p class="hint" id="pwd2-rule">与上面一致</p>
+  <label for="phone">手机号</label>
+  <input id="phone" type="tel" aria-describedby="phone-rule">
+  <small id="phone-rule">用于接收登录验证码</small>
+  <input type="search" aria-label="搜索订单">
+  <input type="hidden" name="csrf" value="x">
+  <button type="submit">提交</button>
+</form>
+<p>删除后无法恢复，项目里的 12 个文件会一起删掉。</p>
+<button class="danger">删除项目</button>
+<button aria-label="关闭">×</button>
+<p class="hint">此操作不可撤销，订单会立即取消并退款到原卡。</p>
+<button>确认付款 ¥128</button>

@@ -185,3 +185,63 @@
 - Paraphrase: endless questions that lead nowhere.
 - Bad pattern: aimless closing questions
 - Check: does the text stop as soon as the content is delivered, with no added summary, reminder or next-step suggestion (unless requested)?
+
+## UI and front-end copy (v5)
+
+AE-29 to AE-32 are about writing too much; AE-33 to AE-35 are about cutting too much. Check both.
+
+### AE-29
+- Source: maintainer's requirement
+- Paraphrase: every card on a settings page has a grey line under its title that restates the title.
+- Bad pattern: a helper line under every section
+- Before: under "Notifications": "Here you can choose which notifications you receive."
+- After: only the "Notifications" heading and the options
+- Check: does any section note just restate its heading or its controls?
+
+### AE-30
+- Source: maintainer's requirement
+- Paraphrase: a slogan sits under the page title as a subtitle, and every slide gets one too.
+- Bad pattern: slogan subtitles
+- Before: under "Billing": "Supercharge your workflow. Payments made simple."; slide subtitle 开启数据驱动的增长之旅 ("start your data-driven growth journey")
+- After: no subtitle; the slide title itself is the conclusion
+- Check: is there a subtitle or slogan whose removal would leave the reader knowing exactly as much?
+
+### AE-31
+- Source: maintainer's requirement
+- Paraphrase: a tutorial paragraph at the top of the page, links that say "click here", "The chart above shows…" under a chart.
+- Bad pattern: tutorial paragraphs, "click here", "here you can / this section lets you / the chart above shows"
+- Before: "This section lets you manage your plan. Click here to learn more about billing."
+- After: delete the paragraph; the link reads "Billing guide"
+- Check: is there text teaching the user how to use the screen, or a link that says "click here"?
+
+### AE-32
+- Source: maintainer's requirement
+- Paraphrase: a definition only a few people need is shown permanently under each metric.
+- Bad pattern: always-visible secondary text instead of a tooltip
+- Before: under "Conversion": "Conversion = paying users ÷ visitors, per calendar day", always shown
+- After: an info icon next to "Conversion" (aria-label="How conversion is calculated") showing the same sentence on hover or focus
+- Check: is there extra information few people need that is always on screen?
+
+### AE-33
+- Source: maintainer's requirement
+- Paraphrase: to make the screen cleaner, input labels were removed and only placeholders left; icon buttons have no name, so screen readers can't read them.
+- Bad pattern: removing form labels and accessible names
+- Before: `<input placeholder="Card number">`, `<button><MoreIcon/></button>`
+- After: `<label htmlFor="card">Card number</label><input id="card">`, `<button aria-label="More options"><MoreIcon/></button>`
+- Check: does every input, select, toggle and icon button have a visible label or aria-label?
+
+### AE-34
+- Source: maintainer's requirement
+- Paraphrase: the consequence text next to delete or pay buttons was cut as redundant, or reduced to "Please proceed with caution".
+- Bad pattern: destructive actions without a concrete consequence
+- Before: "Danger zone — please proceed with caution." with a "Delete account" button
+- After: "You can restore your account within 30 days; after that all projects and billing records are erased." with a "Delete account" button
+- Check: for delete, pay, close account or any change that can't be edited later, does nearby text say what happens, whether it can be undone, and how much money or data is involved?
+
+### AE-35
+- Source: maintainer's requirement
+- Paraphrase: after all the notes are gone, the buttons just say "OK" or "Submit", and a first-time visitor can't tell which to press or what it does.
+- Bad pattern: next step unclear after cutting text
+- Before: a single "OK" at the bottom of the form
+- After: "Save profile"; with several buttons, the primary one stands out and the rest recede
+- Check: can someone opening the screen for the first time, reading nothing, say where to click next and what will happen?

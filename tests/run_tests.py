@@ -7,9 +7,9 @@ from tone_check import check
 
 def run():
     fails = []
-    cases = [(f, "FAIL") for f in sorted(glob.glob(os.path.join(ROOT, "tests/before/*.md")))]
-    cases += [(f, "PASS") for f in sorted(glob.glob(os.path.join(ROOT, "tests/after/*.md")))]
-    cases += [(f, "PASS") for f in sorted(glob.glob(os.path.join(ROOT, "tests/false_positive*.md")))]
+    cases = [(f, "FAIL") for f in sorted(glob.glob(os.path.join(ROOT, "tests/before/*.*")))]
+    cases += [(f, "PASS") for f in sorted(glob.glob(os.path.join(ROOT, "tests/after/*.*")))]
+    cases += [(f, "PASS") for f in sorted(glob.glob(os.path.join(ROOT, "tests/false_positive*.*")))]
     for f, want in cases:
         r = check(open(f, encoding="utf-8").read())
         ok = r["verdict"] == want and (want == "FAIL" or r["hard"] == 0)

@@ -11,23 +11,25 @@ Writing rules for ChatGPT, Grok, Claude and Codex, plus a checker script. Writte
 3. Empty slide titles and inflated endings, such as:
    > "Background", "Summary & Outlook", "the future is bright", "a key step forward"
 
+From v5 it also covers text on UI screens and slide layouts: slogan subtitles, a helper line under every section, "click here". It also requires keeping form labels, accessible names and the consequences of destructive actions.
+
 The rules target behavior, with word lists as examples only. Models reword a banned phrase and keep the habit, so the skill bans the move itself: inventing a misreading the reader never had, then knocking it down.
 
 ## Files
 
 | File | Purpose |
 |---|---|
-| `SKILL.md` / `SKILL.en.md` | Full skill (layers 1–4) with frontmatter, for Codex, Claude Code and other agents |
-| `custom-instructions-compact.md` / `.en.md` | Compact rules: 805 Chinese characters / 1,427 English characters, fits ChatGPT or Grok custom instructions (1,500 limit) |
+| `SKILL.md` / `SKILL.en.md` | Full skill (layers 1–4; section 8 covers UI and front-end copy) with frontmatter, for Codex, Claude Code and other agents |
+| `custom-instructions-compact.md` / `.en.md` | Compact rules: 1,003 Chinese characters / 1,499 English characters, fits ChatGPT or Grok custom instructions (1,500 limit) |
 | `editor-pass-prompt.md` / `.en.md` | Second-pass editing prompt (layer 3) |
-| `anti-examples.md` / `.en.md` | 28 anti-examples, each with a check question to run before delivery |
+| `anti-examples.md` / `.en.md` | 35 anti-examples in 8 groups, each with a check question to run before delivery |
 | `tone_check.py` | Checker, Python standard library only; prints per-line hits, a weighted score and PASS/FAIL (layer 4) |
-| `tests/` | 8 bad samples, 8 rewrites, 3 false-positive sets; results in `tests/results.md` (Chinese) |
+| `tests/` | 11 bad samples, 11 rewrites, 5 false-positive sets; results in `tests/results.md` (Chinese) |
 
 ## Four layers
 
 1. **Layer 1, writing rules:** conclusion first, new information in every sentence, main clause first; plus behavior-level bans on the three habits. Applies while drafting.
-2. **Layer 2, slide rules:** one point per slide, the title is that point with a number, at most 4 bullets, the last slide gives next steps.
+2. **Layer 2, slide rules:** one point per slide, the title is that point with a number, at most 4 bullets, the last slide gives next steps. Subtitles, captions and helper text on UI screens, slide layouts and report pages follow SKILL.md section 8.
 3. **Layer 3, editing pass:** a separate round that changes only problem sentences and compares each against the original for added or lost information. Drafting may restructure; editing must stay faithful, so they run separately.
 4. **Layer 4, check and send back:** when `tone_check.py` fails a draft, the hit lines go back to layer 3, up to 3 rounds. Finish by walking through `anti-examples.md`.
 
@@ -52,26 +54,28 @@ python3 tests/run_tests.py                # regression tests
 
 Verdict rules:
 
-- **hard** (any hit = FAIL): reversal templates, the "this is X / not Y" pattern, disclaimers, "further validation needed" endings, verification lists and TBD markers, stacked qualifiers, meta-commentary, inflated endings, empty slide titles, chat residue.
-- **soft** (hint only): short contrasts, "not only… but also", a single concession, jargon, nominalized verbs, scene-setting openers, footer caveats, defensive "to avoid…" clauses.
+- **hard** (any hit = FAIL): reversal templates, the "this is X / not Y" pattern, disclaimers, "further validation needed" endings, verification lists and TBD markers, stacked qualifiers, meta-commentary, inflated endings, empty slide titles, chat residue; v5 adds "click here", slogan copy, inputs without a label or accessible name, icon-only buttons without a name, and delete/pay buttons with no consequence text nearby.
+- **soft** (hint only): short contrasts, "not only… but also", a single concession, jargon, nominalized verbs, scene-setting openers, footer caveats, defensive "to avoid…" clauses; v5 adds section-explainer lines ("here you can", "this section lets you", 本模块用于), "make X simpler", and always-visible grey helper text in markup.
 - More than one concession → FAIL. Weighted score above 6 and above 15 per 1,000 characters → FAIL.
 - Lines starting with `>` and code blocks are skipped.
+- Two or more section-explainer soft hits, or three or more always-visible helper texts → FAIL. Helper text referenced by `aria-describedby`, or text that states a consequence, doesn't count.
+- The label and destructive-action checks run only when the file contains HTML/JSX tags, including inside code blocks. `.html`, `.jsx`, `.tsx` and `.vue` files can be passed to the script directly.
 
 The script matches surface forms. It misses reworded reversals, forced triplets and invented numbers, so read the draft after a PASS.
 
-**English support:** the rules and prompts are fully translated. The checker is Chinese-first and covers a subset of English: reversals, stacked hedges, disclaimers, meta-commentary, buzzwords, "further testing" endings, table-of-contents titles, and concessions. English inflated endings and chat residue aren't detected yet. The test set has one English sample pair (`06-doc-en.md`). English patterns the checker knows, by category:
+**English support:** the rules and prompts are fully translated. The checker is Chinese-first and covers a subset of English: reversals, stacked hedges, disclaimers, meta-commentary, buzzwords, "further testing" endings, table-of-contents titles, and concessions. English inflated endings and chat residue aren't detected yet. The test set has two English sample pairs (`06-doc-en.md`, and the UI sample `10-ui-en.jsx`); v5 adds English UI patterns: click here, here you can, this section lets you, supercharge/unleash your, at your fingertips, made simple. English patterns the checker knows, by category:
 
 > reversal: it's not X, it's Y / not just X but Y / this is X, not Y · hedge: could potentially · disclaimer: not financial advice · meta: it's worth noting, let's dive · buzzwords: leverage, delve, foster · ending: further testing is needed
 
 ## Test results
 
-Numbers from `tests/results.md`; reproduce with `python3 tests/run_tests.py` (19/19 pass).
+Numbers from `tests/results.md`; reproduce with `python3 tests/run_tests.py` (27/27 pass).
 
 | Test | Result |
 |---|---|
-| 8 bad samples (`tests/before/`) | 8/8 FAIL, 54 hard hits in total |
-| 8 rewrites (`tests/after/`) | 8/8 PASS, 0 hard, 1 soft |
-| 3 false-positive sets: 14 legitimate sentences using 不是/但/虽然/验证/风险提示 (not, but, although, verify, risk note) | 3/3 PASS, 0 hard, 3 soft |
+| 11 bad samples (`tests/before/`), including 3 v5 UI and layout samples | 11/11 FAIL, 72 hard hits in total |
+| 11 rewrites (`tests/after/`) | 11/11 PASS, 0 hard, 1 soft |
+| 3 false-positive sets: 14 legitimate sentences using 不是/但/虽然/验证/风险提示 (not, but, although, verify, risk note), plus 2 v5 UI sets (delete and pay buttons with consequence text, password hints linked by aria-describedby, look-alike words such as 支付成功率 "payment success rate" and 点击率 "click-through rate") | 5/5 PASS, 0 hard, 4 soft |
 
 Hits in the seven v1 bad samples: reversal 10, meta-commentary 9, jargon 9, empty title 8, disclaimer 8, inflated ending 8, stacked qualifier 7, concession 4. The one soft hit left in the rewrites is a training-slide title about stating the conclusion first, which is the slide's actual topic.
 
@@ -105,6 +109,7 @@ The per-rule source table is in the [Chinese README](README.md#规则来源对�
 
 ## Changelog
 
+- **v5:** SKILL.md section 8 "Front-end copy": let structure replace explanatory text; no slogan subtitles, tutorial paragraphs or a helper line under every section; put extra information in an info icon + tooltip. Keep form labels and accessible names, the concrete consequence of destructive actions, and a next step a first-time user can see; when rewriting a screen, cut first, then fix layout and button labels. Section 2.3 states that consequence text on destructive actions isn't defensive writing. Anti-examples grow to 35 (AE-29 to AE-35); the compact rules and the editing prompt each get one item. The checker adds helper, slogan, a11y_label, destructive and ui_hint, and reads HTML/JSX directly; new samples 09–11 and 2 UI false-positive sets.
 - **v4:** added `anti-examples.md` (28 entries, 7 groups); SKILL.md section 7 "Before delivery" (read the anti-examples, final item-by-item check, stop when done, re-paste rules in long chats), plus a model-text slot and a spoken→written two-step; banned the "this is X / not Y" pattern and "further testing / validation / review" endings. Checker adds this_not, further_check and verify_list; new sample 08 and `false_positive_v4.md`. First public release, with English versions.
 - **v3:** zero defense by default — no verification lists, TBDs, risk notes or disclaimers, except in risk/compliance reports.
 - **v2:** from real generated slide decks: footer caveats and defensive "to avoid…" clauses.

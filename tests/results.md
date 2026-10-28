@@ -52,3 +52,22 @@ contrast 10, meta 9, buzzword 9, empty_title 8, disclaimer 8, ending 8, hedge_st
 合计：8 份坏样稿全部 FAIL（hard 54），8 份改写稿全部 PASS（hard 0），3 组误报测试全部 PASS（hard 0）。
 
 v4 已知漏检：`anti-examples.md` 里大部分条目（没人问的反驳、同意后加“但有一点”、HR 腔、刻意短句、结尾追问）脚本抓不到，靠交稿前逐条对照。新样稿仍是自拟，不是 GPT/Grok 输出。
+
+# v5 界面和前端文字（2026-10-28，tone_check.py v5）
+
+新增检测：`helper`（“点击此处/click here”为 hard；“在这里你可以/本模块用于/上图展示了/This section lets you”为 soft，≥2 处 FAIL）、`slogan`（“尽在掌握/一键搞定/为…而生/supercharge your/at your fingertips”为 hard；“让…更简单”为 soft）、`a11y_label`（输入框、下拉框没有标签或可访问名称，只有图标的按钮没有名称，hard）、`destructive`（删除、支付、注销类按钮附近没有后果说明，hard）、`ui_hint`（常驻的 hint/help/description 小字，soft，≥3 处 FAIL）。后三类只在有 HTML/JSX 标签时检查。
+
+| 文件 | 判定 / 加权分 / hard / soft | 命中分类 |
+|---|---|---|
+| before/09-ui-settings.html（新，自拟设置页） | FAIL / 34 / 9 / 9 | slogan 2、helper 4、ui_hint 5、a11y_label 4、destructive 2、disclaimer 1（“请谨慎操作”） |
+| after/09-ui-settings.html | PASS / 0 / 0 / 0 | — |
+| before/10-ui-en.jsx（新，自拟英文账单页） | FAIL / 24 / 7 / 6 | slogan 2、helper 3、ui_hint 4、a11y_label 2、destructive 2 |
+| after/10-ui-en.jsx | PASS / 0 / 0 / 0 | — |
+| before/11-ppt-report-microcopy.md（新，PPT 和报告页的副标题、图注） | FAIL / 8 / 2 / 4 | slogan 2、helper 3、empty_title 1 |
+| after/11-ppt-report-microcopy.md | PASS / 0 / 0 / 0 | — |
+| false_positive_ui.html（新：aria-describedby 关联的密码提示、带后果说明的删除和支付按钮、带 aria-label 的 × 按钮、普通“提交”按钮、hidden 输入框） | PASS / 0 / 0 / 0 | — |
+| false_positive_ui.md（新：“支付成功率”“点击率”“删除重复订单”“This page lists…”等正常句） | PASS / 1 / 0 / 1 | helper 1（“本模块用于解析配置文件”，技术文档里的正常用法，只提示） |
+
+原有 19 个测试结果不变。合计：11 份坏样稿全部 FAIL（hard 72），11 份改写稿全部 PASS（hard 0，soft 1），5 组误报测试全部 PASS（hard 0，soft 4），`python3 tests/run_tests.py` 27/27 通过。
+
+v5 已知漏检：“视觉层级能不能自己说明”和“第一次使用的人能不能看懂下一步”脚本判断不了，靠 SKILL.md 第 8 节的走查和 AE-33 到 AE-35。后果说明按按钮前后的字数窗口查找，相邻元素里的后果文字也会让它通过。

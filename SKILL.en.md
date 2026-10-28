@@ -1,7 +1,7 @@
 ---
 name: plain-tone-zh
-description: Chinese-first writing and editing rules (English translation) that fix three habits of AI-written text — insurance-clause hedging and disclaimers; "not A but B" / "although A, B" reversal and concession templates; empty slide titles and inflated endings. Use when drafting or rewriting slides, reports, documents, articles or product copy, or when the user says "remove the AI tone", "talk like a person" or "no disclaimers". Not for pure fact lookups or code changes.
-version: 4.0.0
+description: Chinese-first writing and editing rules (English translation) that fix three habits of AI-written text — insurance-clause hedging and disclaimers; "not A but B" / "although A, B" reversal and concession templates; empty slide titles and inflated endings; plus UI, slide-layout and report-page microcopy (less helper text, keep labels and destructive-action consequences). Use when drafting or rewriting slides, reports, documents, articles, product copy or UI copy, or when the user says "remove the AI tone", "talk like a person" or "no disclaimers". Not for pure fact lookups or code changes.
+version: 5.0.0
 license: MIT
 ---
 
@@ -14,7 +14,7 @@ The user's explicit instructions override this skill. When they conflict, follow
 The skill has two passes: the **drafting pass** (writing new text) and the **editing pass** (fixing existing text). Their rules differ, so keep them apart: drafting may restructure; editing changes only the problem sentences and keeps the original facts and level of certainty. The [tags] after each rule name the source; see the source table in the README.
 
 Companion files in the same folder:
-- `anti-examples.en.md` / `anti-examples.md`: 28 anti-examples to check before delivery
+- `anti-examples.en.md` / `anti-examples.md`: 35 anti-examples to check before delivery
 - `editor-pass-prompt.en.md` / `editor-pass-prompt.md`: the full editing-pass prompt
 - `tone_check.py`: automatic checker (standard library only)
 - `custom-instructions-compact.en.md` / `custom-instructions-compact.md`: short version for chat-product custom instructions
@@ -58,6 +58,7 @@ Positive instructions first; prohibitions are supplements.
 - **Rewrite defensive "to avoid…" clauses as positive specs:** "keep the knob, to avoid overriding the user's choice" → "manual knob setting takes priority over auto". [v2]
 - **Don't end with "further testing / validation / review is still needed".** Stop at the last concrete result or next step. [v4]
 - **Exception:** write risk, uncertainty or disclaimer content only when the user asks, or says it's a risk, compliance, audit, legal or investment-research report — and keep it in one place. [OAI: user instructions win][v3]
+- **Consequence text on destructive UI actions is not a disclaimer.** Saying what a delete, pay or close-account button will do is operating information; see section 8. [v5]
 
 ## 3. Other frequent problems
 
@@ -77,6 +78,7 @@ Positive instructions first; prohibitions are supplements.
 - The last slide gives next steps (who, what, when), not an uplifting wrap-up. [OIL][HW][HZ#31]
 - Get an outline table of "one conclusion + evidence per slide" from the user or the material before layout; don't let the model free-write the copy. [X public discussion]
 - For slides/PDFs, export each slide's copy to markdown and run the checker before layout.
+- Subtitles, captions and footers on the layout follow section 8.
 
 ## 5. Editing pass: fixing existing text (layer 3)
 
@@ -93,17 +95,39 @@ If you can run code:
 ```
 python3 tone_check.py draft.md
 ```
-- Any hard hit (reversal, "this is X, not Y", disclaimer, "further validation needed", verification list / TBD, stacked qualifiers, meta-commentary, inflated ending, empty title, chat residue), or more than one concession → FAIL.
+- Any hard hit (reversal, "this is X, not Y", disclaimer, "further validation needed", verification list / TBD, stacked qualifiers, meta-commentary, inflated ending, empty title, chat residue, "click here", slogan, unlabeled input, destructive action without consequence), or more than one concession → FAIL.
 - On FAIL, hand the line numbers and tips to the editing pass, re-check, up to 3 rounds. Anything still failing: decide item by item whether it meets a "keep it when" condition; if so, keep it and say so in one line outside the text.
+- For UI work, check the `.html` / `.jsx` file directly; markup inside code blocks is checked too. Two or more per-section helper lines, or three or more always-visible hint lines, → FAIL. Hints tied to an input via `aria-describedby` and hints that state a consequence don't count.
 - Soft hits are hints; judge them in context. The script only matches surface forms and misses reworded reversals. PASS doesn't mean the writing is good; a final read-through decides. [OIL tone_lint's positioning][HW check_prose]
 - The checker's patterns are mostly Chinese. For English text it covers a subset (see README).
 
 ## 7. Before delivery (v4)
 
 1. **Read the anti-example file.** Before drafting, read `anti-examples.en.md`, at least each entry's check question.
-2. **Last step: go through every entry.** After the editing pass and the script, answer the check question for AE-01 through AE-28. If anything matches, rewrite that sentence and start over, until nothing matches. Keep this check out of the deliverable.
+2. **Last step: go through every entry.** After the editing pass and the script, answer the check question for AE-01 through AE-35. If anything matches, rewrite that sentence and start over, until nothing matches. Keep this check out of the deliverable.
 3. **Stop when done.** No summary, reminders, next-step suggestions, "want me to…?" or "if you'd like…", unless the user asks.
 4. **Re-paste the core rules in long conversations.** After several turns models drift back to their default style; paste the compact rules (`custom-instructions-compact.en.md`) before each request for a new draft.
+
+## 8. Front-end copy: UI, slide layout, report pages (v5)
+
+Applies to web and app screens, forms, dialogs, dashboards, and to subtitles, captions and footers in slides and reports. Body paragraphs still follow sections 1–4.
+
+**Write less; let the structure explain.**
+- Hierarchy, grouping, spacing and one clear primary action do the explaining. Text fills only what the structure can't. If size, position and alignment already separate things, don't add "Note", "Tip" or "Info". [v5]
+- Don't add by default: slogan subtitles ("Everything at your fingertips", "Collaboration made simple"), tutorial paragraphs at the top of a page, a helper line under every card or section, "Click here to…", "Here you can…", "This section lets you…". [v5]
+- Labels are nouns or short verb phrases: "Email", not "Please enter your email address below". Buttons name the action and the object: "Export PDF", "Delete 3 files"; not "OK" or "Click here". [v5]
+- When extra information is needed (definitions, how a number is calculated, what a rare field means), put it behind an info icon + tooltip instead of always-visible grey text. The info icon has an accessible name (e.g. `aria-label="How conversion is calculated"`) and opens on keyboard focus. [v5]
+- Same for slides and report pages: the title is the conclusion (section 4); no slogan subtitles; no "The chart above shows…". Captions carry only what the chart can't show: definition, unit, source. [v5]
+
+**Keep these three kinds of text.**
+- Form labels and accessible names: every input, select and toggle has a visible label or `aria-label`; a placeholder is not a label. Icon-only buttons have an `aria-label`. A clean screen comes from cutting redundancy, not labels. [v5]
+- Consequences of destructive or irreversible actions: for delete, pay, close account, or any change that can't be edited afterwards, say next to the button or in the confirm dialog what will happen, whether it can be undone, and how much money or data is involved. E.g. "You can restore it from Trash within 30 days", "Your card ending 4821 will be charged $29". State the concrete consequence, not "Please proceed with caution". [v5]
+- The next step: someone opening the screen for the first time, without reading anything, knows where to click next and what happens when they do. If they don't, fix the layout and button labels; don't add a tutorial paragraph. [v5]
+
+**Order when rewriting an existing screen.**
+1. Cut redundant labels, subtitles, helper text and slogans first; keep the three kinds above.
+2. Walk the main flow as a first-time user. Where it gets unclear, adjust layout, hierarchy and button labels first; then add a tooltip; always-visible text comes last.
+3. Run `tone_check.py`, then go through AE-29 to AE-35.
 
 ## Credits
 

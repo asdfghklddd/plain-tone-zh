@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""tone_check.py v4 — 合并版文风检查器（只用标准库）。
+"""tone_check.py v5 — 合并版文风检查器（只用标准库）。
+v5 新增：界面/PPT/报告前端文字——helper（"点击此处/在这里你可以/本模块用于/Click here/This section lets you"）、
+  slogan（"尽在掌握/开启…之旅/Supercharge your"）、ui_hint（常驻帮助小字 ≥3 处）；
+  HTML/JSX 护栏——a11y_label（输入框无标签/图标按钮无名称）、destructive（删除/支付类按钮附近没有后果说明）。
 v4 新增：这是X不是Y / this is X, not Y、仍需进一步测试/验证/复盘、验证清单/未验证项/待补 区块（来自 anti-examples.md）。
 
 检测：翻案/对比模板、让步转折、限定词堆叠、免责/保险条款、元叙述（"我不会…"）、
@@ -67,6 +70,13 @@ RULES = [
  ("further_check","hard",3, r"(?:仍|还|尚)(?:然)?(?:需要?|有待)(?:进一步|继续|持续)?(?:的)?(?:测试|验证|复盘|研究|观察|评估|核实)", "删掉“仍需进一步测试/验证/复盘”式结尾，停在最后一个具体结果（AE-19）"),
  ("further_check","hard",3, r"(?i)\b(?:further|more)\s+(?:testing|validation|research|investigation)\s+(?:is|are|will be)\s+(?:needed|required)", "Delete; end on the last concrete result"),
  ("verify_list","hard",3, r"【待(?:补|验证|确认)】|\[待补\]", "删掉“待补/待验证”标记；缺材料就不写（AE-20）"),
+ # ---- 12. v5：界面和前端文字 ----
+ ("helper","hard",2, r"点击(?:此处|这里)|(?i:\bclick here\b)", "链接/按钮直接写动作和对象（“导出 PDF”），不写“点击此处”（AE-31）"),
+ ("helper","soft",1, r"(?:在这里|在此|此处)(?:你|您)?(?:可以|能够)|(?:本|该|此)(?:模块|页面|页|区域|板块|区块|卡片|面板|栏目)(?:主要)?(?:用于|用来|可以帮助|帮助(?:你|您)|旨在|展示了|为(?:你|您)提供)|(?:上|下|左|右|本)图(?:展示|反映|呈现)了", "区块下的教学说明：让标题和布局自己说清；确需补充就放 info 图标 + tooltip（AE-29/AE-31）"),
+ ("helper","soft",1, r"(?i)\b(?:this|the)\s+(?:section|page|panel|module|card|area|screen|tab|widget)\s+(?:lets|allows|helps|enables)\s+you\b|\bhere you can\b|\buse this (?:section|panel|page|card) to\b", "Per-section helper text: let the heading and layout explain; use an info icon + tooltip if needed"),
+ ("slogan","hard",2, r"尽在掌握|触手可及|一键搞定|轻松(?:搞定|掌控)|开启[^。，,\n]{0,8}之旅|从此告别|随心所欲|超乎想象|专为[^。，,\n]{1,8}而生|为(?:效率|你|您|创作|增长|未来)而生|重新定义[^。，,\n]{0,6}(?:体验|未来|方式)", "slogan 式副标题/文案：删掉，或换成一句具体事实（AE-30）"),
+ ("slogan","hard",2, r"(?i)\b(?:supercharge|unleash|elevate|unlock) your\b|\bat your fingertips\b|\b(?:made|make it) (?:simple|easy|effortless)\b|\bredefin(?:e|es|ing) (?:the way|how)\b|\bto the next level\b", "Slogan copy: delete it or replace with one concrete fact"),
+ ("slogan","soft",1, r"让[^。，,！!\n]{1,12}更(?:简单|高效|智能|轻松|美好|从容|有底气)", "口号式“让…更简单”：写出具体省了什么（几步、几分钟）"),
  # ---- 9. 聊天残留（hard）----
  ("chat","hard",2, r"希望(?:这|以上)?(?:对你|对您|能)(?:有所)?帮助|当然可以|这是一个(?:非常|很)?好的问题|如(?:需|有)(?:更多|任何)(?:信息|帮助|问题)|(?:欢迎|随时)(?:告诉我|联系)", "删除"),
 ]
@@ -90,7 +100,61 @@ def is_title(line):
 def strip_code(text):
     return re.sub(r"```.*?```", lambda m: "\n" * m.group(0).count("\n"), text, flags=re.S)
 
+# ---- v5：HTML/JSX 片段护栏（在原文上跑，包括代码块）----
+TAG = re.compile(r"<[^>]+>")
+CONSEQ = re.compile(r"不可(?:撤销|恢复|撤回|找回|修改|更改)|无法(?:撤销|恢复|撤回|找回|修改)|(?:删除|支付|付款|提交|注销|清空)后|将(?:被)?(?:永久)?(?:删除|清空|移除|扣款|扣除|收取|注销|失效)|扣款|回收站|可恢复|天内|(?:¥|￥|\$|€)\s?\d|\d\s?元"
+                    r"|(?i:cannot be undone|can'?t be undone|irreversible|permanent(?:ly)?|will (?:be )?(?:deleted|removed|charged|erased|lost|billed)|you(?:'ll| will) be (?:charged|billed)|\btrash\b|restore (?:it )?within)")
+DESTRUCT = re.compile(r"删除|清空|注销|销毁|支付|付款|确认购买|立即购买|下单|永久|不可撤|最终提交|(?i:\b(?:delete|erase|destroy|wipe|pay|purchase|buy now|place order|close account|deactivate|remove (?:all|permanently)|submit (?:permanently|final))\b)")
+ATTR_NAME = re.compile(r"\b(?:aria-label|aria-labelledby|title|label)\s*=\s*(?:\"[^\"]+\"|'[^']+'|\{[^}]+\})", re.I)
+HINT = re.compile(r"<(small|p|div|span|Text|Typography)\b([^>]*\bclass(?:Name)?\s*=\s*[\"'][^\"']*\b(?:hint|help|helper|help-text|helper-text|description|desc|subtitle|caption|muted|note)\b[^\"']*[\"'][^>]*)>(.*?)</\1>|<small\b([^>]*)>(.*?)</small>|\b(?:helperText|description|subtitle)\s*=\s*[\"']([^\"']+)[\"']", re.S)
+
+def lineno(text, pos): return text.count("\n", 0, pos) + 1
+
+def check_markup(raw):
+    hits = []
+    if not re.search(r"<(?:input|textarea|select|button|Button|Input|TextField|Select|label|form|a)\b", raw):
+        return hits
+    # 1. 输入框必须有标签或可访问名称（占位符不算）
+    for m in re.finditer(r"<(input|textarea|select|Input|TextField|Select|Textarea)\b([^>]*)>", raw):
+        attrs = m.group(2)
+        if re.search(r"type\s*=\s*[\"']?(?:hidden|submit|button|reset|image)\b", attrs, re.I): continue
+        if ATTR_NAME.search(attrs): continue
+        idm = re.search(r"\bid\s*=\s*[\"']([^\"']+)[\"']", attrs)
+        if idm and re.search(r"(?:for|htmlFor)\s*=\s*[\"']%s[\"']" % re.escape(idm.group(1)), raw): continue
+        before = raw[:m.start()]
+        if before.rfind("<label") > before.rfind("</label"): continue
+        hits.append(dict(line=lineno(raw, m.start()), cat="a11y_label", sev="hard", w=3, text=m.group(0)[:50],
+                         tip="输入框没有可见标签或 aria-label（占位符不算）；界面清爽不能靠删标签（AE-33）"))
+    # 2. 按钮：只有图标要有名称；危险操作要有后果说明
+    for m in re.finditer(r"<(button|Button|a)\b([^>]*)>(.*?)</\1>|<input\b([^>]*type\s*=\s*[\"']?(?:submit|button)[^>]*)>", raw, re.S):
+        attrs = m.group(2) if m.group(1) else m.group(4)
+        inner = m.group(3) or ""
+        vm = re.search(r"\bvalue\s*=\s*[\"']([^\"']*)[\"']", attrs or "")
+        label = (TAG.sub("", inner) + " " + (vm.group(1) if vm else "")).strip()
+        am = re.search(r"\baria-label\s*=\s*[\"']([^\"']+)[\"']", attrs or "")
+        name = label + " " + (am.group(1) if am else "")
+        if m.group(1) in ("button", "Button") and re.fullmatch(r"[\s×✕✖ⓘ⋯…?？!！+\-]*", label) and not ATTR_NAME.search(attrs or ""):
+            hits.append(dict(line=lineno(raw, m.start()), cat="a11y_label", sev="hard", w=3, text=m.group(0)[:50],
+                             tip="只有图标的按钮要有 aria-label（info 图标同理）（AE-33）"))
+        if DESTRUCT.search(name):
+            ctx = raw[max(0, m.start() - 400):m.start()] + " " + raw[m.end():m.end() + 300]
+            if not CONSEQ.search(TAG.sub(" ", ctx)):
+                hits.append(dict(line=lineno(raw, m.start()), cat="destructive", sev="hard", w=3, text=name.strip()[:50],
+                                 tip="删除/支付/不可撤回操作附近要写清后果：删掉什么、能否恢复、扣多少钱（AE-34）；“请谨慎操作”不算"))
+    # 3. 常驻帮助小字：挂在输入框上的（aria-describedby）和写后果的不算
+    described = set(re.findall(r"aria-describedby\s*=\s*[\"']([^\"']+)[\"']", raw))
+    described = {x for d in described for x in d.split()}
+    for m in HINT.finditer(raw):
+        attrs = m.group(2) or m.group(4) or ""
+        body = TAG.sub("", m.group(3) or m.group(5) or m.group(6) or "")
+        idm = re.search(r"\bid\s*=\s*[\"']([^\"']+)[\"']", attrs)
+        if (idm and idm.group(1) in described) or CONSEQ.search(body) or not body.strip(): continue
+        hits.append(dict(line=lineno(raw, m.start()), cat="ui_hint", sev="soft", w=1, text=body.strip()[:50],
+                         tip="常驻的帮助小字：先删；看不懂再改布局/按钮文案，仍需补充就用 info 图标 + tooltip（AE-29/AE-32）"))
+    return hits
+
 def check(text, max_score=6.0, max_concessive=1):
+    raw = text
     text = strip_code(text)
     hits = []
     for n, line in enumerate(text.splitlines(), 1):
@@ -101,11 +165,14 @@ def check(text, max_score=6.0, max_concessive=1):
                 hits.append(dict(line=n, cat=cat, sev=sev, w=w, text=m.group(0)[:50], tip=tip))
         if re.match(r"^\s*(?:#+\s*|[-*•]\s*|\d+[.、]\s*)?(?:附[:：]?\s*)?(?:验证清单|未验证(?:项|事项|清单)?|待验证(?:项|事项|清单)?|待补(?:充)?(?:项|事项|清单|信息)?|风险提示|局限(?:说明|性)?|免责(?:声明|说明)?)\s*[:：]?\s*$", line):
             hits.append(dict(line=n, cat="verify_list", sev="hard", w=3, text=line.strip()[:50], tip="未经要求的验证清单/待补/风险提示/免责区块：整块删除（AE-20；用户要求或风控报告除外）"))
-        if is_title(line):
-            t = re.sub(r"^(?:标题|Title|Slide\s*\d+|第\s*\d+\s*页)\s*[:：]\s*", "", line.strip(), flags=re.I)
+        tl = TAG.sub("", line)
+        if tl.strip() and is_title(tl):
+            t = re.sub(r"^(?:标题|Title|Slide\s*\d+|第\s*\d+\s*页)\s*[:：]\s*", "", tl.strip(), flags=re.I)
             for pat, tip in TITLE_RULES:
                 if re.search(pat, t):
                     hits.append(dict(line=n, cat="empty_title", sev="hard", w=2, text=t[:50], tip=tip)); break
+    hits += check_markup(raw)
+    hits.sort(key=lambda h: h["line"])
     counts = {}
     for h in hits: counts[h["cat"]] = counts.get(h["cat"], 0) + 1
     chars = max(len(re.sub(r"\s", "", text)), 1)
@@ -113,9 +180,11 @@ def check(text, max_score=6.0, max_concessive=1):
     per1k = round(score * 1000 / chars, 1)
     hard = sum(1 for h in hits if h["sev"] == "hard")
     reasons = []
-    if hard: reasons.append(f"{hard} 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）")
+    if hard: reasons.append(f"{hard} 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留/点击此处/slogan/缺标签/危险操作无后果，任一即 FAIL）")
     if counts.get("concessive", 0) > max_concessive: reasons.append(f"让步转折 {counts['concessive']} 处 > {max_concessive}")
     if counts.get("caveat", 0) >= 3: reasons.append(f"保险句 {counts['caveat']} 处 ≥3（每页一句免责=保险条款，集中到一处）")
+    if counts.get("helper", 0) - sum(1 for h in hits if h["cat"] == "helper" and h["sev"] == "hard") >= 2: reasons.append("区块帮助说明 ≥2 处（“在这里你可以/本模块用于/This section lets you”），删掉，让标题和布局说明")
+    if counts.get("ui_hint", 0) >= 3: reasons.append(f"常驻帮助小字 {counts['ui_hint']} 处 ≥3（每个区块都挂说明），删掉或改成 info 图标 + tooltip")
     if counts.get("guard", 0) >= 3: reasons.append(f"防御性'避免…'从句 {counts['guard']} 处 ≥3")
     if score > max_score and per1k > 15: reasons.append(f"加权分 {score} > {max_score} 且密度 {per1k}/千字 > 15")
     return dict(chars=chars, score=score, per1k=per1k, counts=counts, hard=hard,

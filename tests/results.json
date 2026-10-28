@@ -17,7 +17,7 @@
   "soft": 5,
   "verdict": "FAIL",
   "reasons": [
-   "9 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "9 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留/点击此处/slogan/缺标签/危险操作无后果，任一即 FAIL）",
    "加权分 28 > 6.0 且密度 148.9/千字 > 15"
   ],
   "hits": [
@@ -153,7 +153,7 @@
   "soft": 2,
   "verdict": "FAIL",
   "reasons": [
-   "9 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "9 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留/点击此处/slogan/缺标签/危险操作无后果，任一即 FAIL）",
    "加权分 24 > 6.0 且密度 131.9/千字 > 15"
   ],
   "hits": [
@@ -262,7 +262,7 @@
   "soft": 3,
   "verdict": "FAIL",
   "reasons": [
-   "4 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "4 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留/点击此处/slogan/缺标签/危险操作无后果，任一即 FAIL）",
    "加权分 13 > 6.0 且密度 72.2/千字 > 15"
   ],
   "hits": [
@@ -340,7 +340,7 @@
   "soft": 1,
   "verdict": "FAIL",
   "reasons": [
-   "6 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "6 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留/点击此处/slogan/缺标签/危险操作无后果，任一即 FAIL）",
    "加权分 17 > 6.0 且密度 114.9/千字 > 15"
   ],
   "hits": [
@@ -418,7 +418,7 @@
   "soft": 3,
   "verdict": "FAIL",
   "reasons": [
-   "8 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "8 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留/点击此处/slogan/缺标签/危险操作无后果，任一即 FAIL）",
    "加权分 23 > 6.0 且密度 139.4/千字 > 15"
   ],
   "hits": [
@@ -528,7 +528,7 @@
   "soft": 3,
   "verdict": "FAIL",
   "reasons": [
-   "4 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "4 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留/点击此处/slogan/缺标签/危险操作无后果，任一即 FAIL）",
    "加权分 13 > 6.0 且密度 56.8/千字 > 15"
   ],
   "hits": [
@@ -606,7 +606,7 @@
   "soft": 0,
   "verdict": "FAIL",
   "reasons": [
-   "8 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "8 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留/点击此处/slogan/缺标签/危险操作无后果，任一即 FAIL）",
    "加权分 20 > 6.0 且密度 137.0/千字 > 15"
   ],
   "hits": [
@@ -690,7 +690,7 @@
   "soft": 1,
   "verdict": "FAIL",
   "reasons": [
-   "6 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留，任一即 FAIL）",
+   "6 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留/点击此处/slogan/缺标签/危险操作无后果，任一即 FAIL）",
    "加权分 19 > 6.0 且密度 87.2/千字 > 15"
   ],
   "hits": [
@@ -749,6 +749,369 @@
     "w": 1,
     "text": "待验证",
     "tip": "同一份稿子只在一处集中写清缺什么证据，别每页贴一句"
+   }
+  ]
+ },
+ "tests/before/09-ui-settings.html": {
+  "chars": 659,
+  "score": 34,
+  "per1k": 51.6,
+  "counts": {
+   "slogan": 2,
+   "ui_hint": 5,
+   "helper": 4,
+   "a11y_label": 4,
+   "destructive": 2,
+   "disclaimer": 1
+  },
+  "hard": 9,
+  "soft": 9,
+  "verdict": "FAIL",
+  "reasons": [
+   "9 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留/点击此处/slogan/缺标签/危险操作无后果，任一即 FAIL）",
+   "区块帮助说明 ≥2 处（“在这里你可以/本模块用于/This section lets you”），删掉，让标题和布局说明",
+   "常驻帮助小字 5 处 ≥3（每个区块都挂说明），删掉或改成 info 图标 + tooltip",
+   "加权分 34 > 6.0 且密度 51.6/千字 > 15"
+  ],
+  "hits": [
+   {
+    "line": 3,
+    "cat": "slogan",
+    "sev": "hard",
+    "w": 2,
+    "text": "尽在掌握",
+    "tip": "slogan 式副标题/文案：删掉，或换成一句具体事实（AE-30）"
+   },
+   {
+    "line": 3,
+    "cat": "slogan",
+    "sev": "soft",
+    "w": 1,
+    "text": "让账户管理更简单",
+    "tip": "口号式“让…更简单”：写出具体省了什么（几步、几分钟）"
+   },
+   {
+    "line": 3,
+    "cat": "ui_hint",
+    "sev": "soft",
+    "w": 1,
+    "text": "一切尽在掌握，让账户管理更简单",
+    "tip": "常驻的帮助小字：先删；看不懂再改布局/按钮文案，仍需补充就用 info 图标 + tooltip（AE-29/AE-32）"
+   },
+   {
+    "line": 4,
+    "cat": "helper",
+    "sev": "hard",
+    "w": 2,
+    "text": "点击此处",
+    "tip": "链接/按钮直接写动作和对象（“导出 PDF”），不写“点击此处”（AE-31）"
+   },
+   {
+    "line": 4,
+    "cat": "helper",
+    "sev": "soft",
+    "w": 1,
+    "text": "在这里你可以",
+    "tip": "区块下的教学说明：让标题和布局自己说清；确需补充就放 info 图标 + tooltip（AE-29/AE-31）"
+   },
+   {
+    "line": 8,
+    "cat": "helper",
+    "sev": "soft",
+    "w": 1,
+    "text": "本模块用于",
+    "tip": "区块下的教学说明：让标题和布局自己说清；确需补充就放 info 图标 + tooltip（AE-29/AE-31）"
+   },
+   {
+    "line": 8,
+    "cat": "ui_hint",
+    "sev": "soft",
+    "w": 1,
+    "text": "本模块用于修改你的昵称和邮箱。",
+    "tip": "常驻的帮助小字：先删；看不懂再改布局/按钮文案，仍需补充就用 info 图标 + tooltip（AE-29/AE-32）"
+   },
+   {
+    "line": 9,
+    "cat": "a11y_label",
+    "sev": "hard",
+    "w": 3,
+    "text": "<input type=\"text\" placeholder=\"请输入您的昵称\">",
+    "tip": "输入框没有可见标签或 aria-label（占位符不算）；界面清爽不能靠删标签（AE-33）"
+   },
+   {
+    "line": 10,
+    "cat": "a11y_label",
+    "sev": "hard",
+    "w": 3,
+    "text": "<input type=\"email\" placeholder=\"请输入您的邮箱地址\">",
+    "tip": "输入框没有可见标签或 aria-label（占位符不算）；界面清爽不能靠删标签（AE-33）"
+   },
+   {
+    "line": 16,
+    "cat": "helper",
+    "sev": "soft",
+    "w": 1,
+    "text": "在此您可以",
+    "tip": "区块下的教学说明：让标题和布局自己说清；确需补充就放 info 图标 + tooltip（AE-29/AE-31）"
+   },
+   {
+    "line": 16,
+    "cat": "ui_hint",
+    "sev": "soft",
+    "w": 1,
+    "text": "在此您可以选择接收哪些通知。",
+    "tip": "常驻的帮助小字：先删；看不懂再改布局/按钮文案，仍需补充就用 info 图标 + tooltip（AE-29/AE-32）"
+   },
+   {
+    "line": 17,
+    "cat": "a11y_label",
+    "sev": "hard",
+    "w": 3,
+    "text": "<select>",
+    "tip": "输入框没有可见标签或 aria-label（占位符不算）；界面清爽不能靠删标签（AE-33）"
+   },
+   {
+    "line": 22,
+    "cat": "ui_hint",
+    "sev": "soft",
+    "w": 1,
+    "text": "管理你的套餐与付款方式。",
+    "tip": "常驻的帮助小字：先删；看不懂再改布局/按钮文案，仍需补充就用 info 图标 + tooltip（AE-29/AE-32）"
+   },
+   {
+    "line": 23,
+    "cat": "a11y_label",
+    "sev": "hard",
+    "w": 3,
+    "text": "<button class=\"icon\"><svg viewBox=\"0 0 16 16\"></sv",
+    "tip": "只有图标的按钮要有 aria-label（info 图标同理）（AE-33）"
+   },
+   {
+    "line": 24,
+    "cat": "destructive",
+    "sev": "hard",
+    "w": 3,
+    "text": "立即支付",
+    "tip": "删除/支付/不可撤回操作附近要写清后果：删掉什么、能否恢复、扣多少钱（AE-34）；“请谨慎操作”不算"
+   },
+   {
+    "line": 29,
+    "cat": "disclaimer",
+    "sev": "hard",
+    "w": 3,
+    "text": "请谨慎操作",
+    "tip": "删除；真实的不确定写一次、贴着数字、说清缺什么"
+   },
+   {
+    "line": 29,
+    "cat": "ui_hint",
+    "sev": "soft",
+    "w": 1,
+    "text": "请谨慎操作。",
+    "tip": "常驻的帮助小字：先删；看不懂再改布局/按钮文案，仍需补充就用 info 图标 + tooltip（AE-29/AE-32）"
+   },
+   {
+    "line": 30,
+    "cat": "destructive",
+    "sev": "hard",
+    "w": 3,
+    "text": "删除账户",
+    "tip": "删除/支付/不可撤回操作附近要写清后果：删掉什么、能否恢复、扣多少钱（AE-34）；“请谨慎操作”不算"
+   }
+  ]
+ },
+ "tests/before/10-ui-en.jsx": {
+  "chars": 585,
+  "score": 24,
+  "per1k": 41.0,
+  "counts": {
+   "slogan": 2,
+   "ui_hint": 4,
+   "helper": 3,
+   "a11y_label": 2,
+   "destructive": 2
+  },
+  "hard": 7,
+  "soft": 6,
+  "verdict": "FAIL",
+  "reasons": [
+   "7 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留/点击此处/slogan/缺标签/危险操作无后果，任一即 FAIL）",
+   "区块帮助说明 ≥2 处（“在这里你可以/本模块用于/This section lets you”），删掉，让标题和布局说明",
+   "常驻帮助小字 4 处 ≥3（每个区块都挂说明），删掉或改成 info 图标 + tooltip",
+   "加权分 24 > 6.0 且密度 41.0/千字 > 15"
+  ],
+  "hits": [
+   {
+    "line": 6,
+    "cat": "slogan",
+    "sev": "hard",
+    "w": 2,
+    "text": "Supercharge your",
+    "tip": "Slogan copy: delete it or replace with one concrete fact"
+   },
+   {
+    "line": 6,
+    "cat": "slogan",
+    "sev": "hard",
+    "w": 2,
+    "text": "made simple",
+    "tip": "Slogan copy: delete it or replace with one concrete fact"
+   },
+   {
+    "line": 6,
+    "cat": "ui_hint",
+    "sev": "soft",
+    "w": 1,
+    "text": "Supercharge your workflow. Payments made simple.",
+    "tip": "常驻的帮助小字：先删；看不懂再改布局/按钮文案，仍需补充就用 info 图标 + tooltip（AE-29/AE-32）"
+   },
+   {
+    "line": 7,
+    "cat": "helper",
+    "sev": "soft",
+    "w": 1,
+    "text": "This section lets you",
+    "tip": "Per-section helper text: let the heading and layout explain; use an info icon + tooltip if needed"
+   },
+   {
+    "line": 7,
+    "cat": "ui_hint",
+    "sev": "soft",
+    "w": 1,
+    "text": "This section lets you manage your plan and payment",
+    "tip": "常驻的帮助小字：先删；看不懂再改布局/按钮文案，仍需补充就用 info 图标 + tooltip（AE-29/AE-32）"
+   },
+   {
+    "line": 8,
+    "cat": "helper",
+    "sev": "soft",
+    "w": 1,
+    "text": "Here you can",
+    "tip": "Per-section helper text: let the heading and layout explain; use an info icon + tooltip if needed"
+   },
+   {
+    "line": 8,
+    "cat": "ui_hint",
+    "sev": "soft",
+    "w": 1,
+    "text": "Here you can update your card details at any time.",
+    "tip": "常驻的帮助小字：先删；看不懂再改布局/按钮文案，仍需补充就用 info 图标 + tooltip（AE-29/AE-32）"
+   },
+   {
+    "line": 9,
+    "cat": "helper",
+    "sev": "hard",
+    "w": 2,
+    "text": "Click here",
+    "tip": "链接/按钮直接写动作和对象（“导出 PDF”），不写“点击此处”（AE-31）"
+   },
+   {
+    "line": 9,
+    "cat": "ui_hint",
+    "sev": "soft",
+    "w": 1,
+    "text": "Click here to learn more about billing.",
+    "tip": "常驻的帮助小字：先删；看不懂再改布局/按钮文案，仍需补充就用 info 图标 + tooltip（AE-29/AE-32）"
+   },
+   {
+    "line": 10,
+    "cat": "a11y_label",
+    "sev": "hard",
+    "w": 3,
+    "text": "<input type=\"text\" placeholder=\"Card number\" />",
+    "tip": "输入框没有可见标签或 aria-label（占位符不算）；界面清爽不能靠删标签（AE-33）"
+   },
+   {
+    "line": 11,
+    "cat": "a11y_label",
+    "sev": "hard",
+    "w": 3,
+    "text": "<button onClick={openMenu}><MoreIcon /></button>",
+    "tip": "只有图标的按钮要有 aria-label（info 图标同理）（AE-33）"
+   },
+   {
+    "line": 12,
+    "cat": "destructive",
+    "sev": "hard",
+    "w": 3,
+    "text": "Pay now",
+    "tip": "删除/支付/不可撤回操作附近要写清后果：删掉什么、能否恢复、扣多少钱（AE-34）；“请谨慎操作”不算"
+   },
+   {
+    "line": 13,
+    "cat": "destructive",
+    "sev": "hard",
+    "w": 3,
+    "text": "Delete payment method",
+    "tip": "删除/支付/不可撤回操作附近要写清后果：删掉什么、能否恢复、扣多少钱（AE-34）；“请谨慎操作”不算"
+   }
+  ]
+ },
+ "tests/before/11-ppt-report-microcopy.md": {
+  "chars": 162,
+  "score": 8,
+  "per1k": 49.4,
+  "counts": {
+   "slogan": 2,
+   "empty_title": 1,
+   "helper": 3
+  },
+  "hard": 2,
+  "soft": 4,
+  "verdict": "FAIL",
+  "reasons": [
+   "2 处 hard 命中（翻案/这是X不是Y/免责/仍需进一步验证/验证清单/堆叠限定/元叙述/拔高结尾/空标题/聊天残留/点击此处/slogan/缺标签/危险操作无后果，任一即 FAIL）",
+   "区块帮助说明 ≥2 处（“在这里你可以/本模块用于/This section lets you”），删掉，让标题和布局说明",
+   "加权分 8 > 6.0 且密度 49.4/千字 > 15"
+  ],
+  "hits": [
+   {
+    "line": 2,
+    "cat": "slogan",
+    "sev": "hard",
+    "w": 2,
+    "text": "开启数据驱动的增长之旅",
+    "tip": "slogan 式副标题/文案：删掉，或换成一句具体事实（AE-30）"
+   },
+   {
+    "line": 2,
+    "cat": "empty_title",
+    "sev": "hard",
+    "w": 2,
+    "text": "副标题：开启数据驱动的增长之旅",
+    "tip": "口号词标题，改成'对象+动作/判断+数字'"
+   },
+   {
+    "line": 3,
+    "cat": "helper",
+    "sev": "soft",
+    "w": 1,
+    "text": "本页展示了",
+    "tip": "区块下的教学说明：让标题和布局自己说清；确需补充就放 info 图标 + tooltip（AE-29/AE-31）"
+   },
+   {
+    "line": 5,
+    "cat": "helper",
+    "sev": "soft",
+    "w": 1,
+    "text": "上图展示了",
+    "tip": "区块下的教学说明：让标题和布局自己说清；确需补充就放 info 图标 + tooltip（AE-29/AE-31）"
+   },
+   {
+    "line": 8,
+    "cat": "slogan",
+    "sev": "soft",
+    "w": 1,
+    "text": "让每一次决策更有底气",
+    "tip": "口号式“让…更简单”：写出具体省了什么（几步、几分钟）"
+   },
+   {
+    "line": 9,
+    "cat": "helper",
+    "sev": "soft",
+    "w": 1,
+    "text": "本模块用于",
+    "tip": "区块下的教学说明：让标题和布局自己说清；确需补充就放 info 图标 + tooltip（AE-29/AE-31）"
    }
   ]
  },
@@ -851,6 +1214,39 @@
   "reasons": [],
   "hits": []
  },
+ "tests/after/09-ui-settings.html": {
+  "chars": 665,
+  "score": 0,
+  "per1k": 0.0,
+  "counts": {},
+  "hard": 0,
+  "soft": 0,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": []
+ },
+ "tests/after/10-ui-en.jsx": {
+  "chars": 479,
+  "score": 0,
+  "per1k": 0.0,
+  "counts": {},
+  "hard": 0,
+  "soft": 0,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": []
+ },
+ "tests/after/11-ppt-report-microcopy.md": {
+  "chars": 123,
+  "score": 0,
+  "per1k": 0.0,
+  "counts": {},
+  "hard": 0,
+  "soft": 0,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": []
+ },
  "tests/false_positive.md": {
   "chars": 145,
   "score": 0,
@@ -890,6 +1286,39 @@
     "w": 1,
     "text": "不是 bug，是",
     "tip": "确认否定部分是否纠正了真实误解"
+   }
+  ]
+ },
+ "tests/false_positive_ui.html": {
+  "chars": 696,
+  "score": 0,
+  "per1k": 0.0,
+  "counts": {},
+  "hard": 0,
+  "soft": 0,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": []
+ },
+ "tests/false_positive_ui.md": {
+  "chars": 136,
+  "score": 1,
+  "per1k": 7.4,
+  "counts": {
+   "helper": 1
+  },
+  "hard": 0,
+  "soft": 1,
+  "verdict": "PASS",
+  "reasons": [],
+  "hits": [
+   {
+    "line": 1,
+    "cat": "helper",
+    "sev": "soft",
+    "w": 1,
+    "text": "本模块用于",
+    "tip": "区块下的教学说明：让标题和布局自己说清；确需补充就放 info 图标 + tooltip（AE-29/AE-31）"
    }
   ]
  },
